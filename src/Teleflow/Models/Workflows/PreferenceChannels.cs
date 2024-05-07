@@ -4,7 +4,7 @@ namespace Teleflow.Models.Workflows;
 
 /// <summary>
 ///     Channel preference settings
-///     see https://docs.teleflow.co/api/create-workflow/ (expand preference settings)
+///     see https://docs.teleflow.khulnasoft.com/api/create-workflow/ (expand preference settings)
 /// </summary>
 public class PreferenceChannels
 {

@@ -1,11 +1,3 @@
-<div align="center"> 
-    <a href="https://teleflow.co" target="_blank"> 
-        <picture>
-            <source media="(prefers-color-scheme: dark)" srcset="https://user-images.githubusercontent.com/2233092/213641039-220ac15f-f367-4d13-9eaf-56e79433b8c1.png"> <img src="https://user-images.githubusercontent.com/2233092/213641043-3bbb3f21-3c53-4e67-afe5-755aeb222159.png" width="280" alt="Logo"/> 
-        </picture> 
-    </a> 
-</div>
-
 # teleflow-dotnet
 
 [![NuGet](https://img.shields.io/nuget/v/Teleflow.svg)](https://www.nuget.org/packages/Teleflow/)
@@ -18,9 +10,9 @@ teleflow-dotnet targets .NET Standard 2.0 and is compatible with .NET Core 2.0+ 
 
 ## Features
 
-- Bindings against most [API endpoints](https://docs.teleflow.co/api/overview/)
+- Bindings against most [API endpoints](https://docs.teleflow.khulnasoft.com/api/overview/)
   - Events, subscribers, notifications, integrations, layouts, topics, workflows, workflow groups, messages, execution details
-  - Not Implemented: [environments](https://docs.teleflow.co/api/get-current-environment/), [inbound parse](https://docs.teleflow.co/api/validate-the-mx-record-setup-for-the-inbound-parse-functionality/), [changes](https://docs.teleflow.co/api/get-changes/)
+  - Not Implemented: [environments](https://docs.teleflow.khulnasoft.com/api/get-current-environment/), [inbound parse](https://docs.teleflow.khulnasoft.com/api/validate-the-mx-record-setup-for-the-inbound-parse-functionality/), [changes](https://docs.teleflow.khulnasoft.com/api/get-changes/)
 - Bootstrap each services as part of services provider or directly as a singleton class (setting injectable)
 - A Sync service that will mirror an environment based a set of templates (layouts, integrations, workflow groups, workflows)
 
@@ -52,7 +44,7 @@ using Teleflow;
 
  var teleflowConfiguration = new TeleflowClientConfiguration
 {
-    // Defaults to https://api.teleflow.co/v1
+    // Defaults to https://api-teleflow.khulnasoft.com/v1
     Url = "https://teleflow-api.my-domain.com/v1",
     ApiKey = "12345",
 };

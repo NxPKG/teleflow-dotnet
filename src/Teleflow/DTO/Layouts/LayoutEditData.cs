@@ -1,7 +1,7 @@
 namespace Teleflow.DTO.Layouts;
 
 /// <summary>
-///     see https://docs.teleflow.co/api/update-a-layout/
+///     see https://docs.teleflow.khulnasoft.com/api/update-a-layout/
 /// </summary>
 public class LayoutEditData : LayoutCreateData
 {

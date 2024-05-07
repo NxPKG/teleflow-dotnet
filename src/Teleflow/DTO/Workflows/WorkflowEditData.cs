@@ -28,7 +28,7 @@ public class WorkflowEditData
     public Step[] Steps { get; set; }
 
     /// <remarks>
-    ///     This is a workflow group in the api see https://docs.teleflow.co/api/create-workflow-group/
+    ///     This is a workflow group in the api see https://docs.teleflow.khulnasoft.com/api/create-workflow-group/
     /// </remarks>
     [JsonProperty("notificationGroupId")]
     public string WorkflowGroupId { get; set; }
@@ -39,7 +39,7 @@ public class WorkflowEditData
     [JsonProperty("active")] public bool Active { get; set; }
 
     /// <remarks>
-    ///     This is a workflow group in the api see https://docs.teleflow.co/api/create-workflow-group/
+    ///     This is a workflow group in the api see https://docs.teleflow.khulnasoft.com/api/create-workflow-group/
     /// </remarks>
     [JsonProperty("preferenceSettings")]
     public PreferenceChannels PreferenceSettings { get; set; }

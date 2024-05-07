@@ -8,7 +8,7 @@ namespace Teleflow.Interfaces;
 public interface IExecutionDetailsClient
 {
     /// <summary>
-    ///     see https://docs.teleflow.co/api/get-execution-details/
+    ///     see https://docs.teleflow.khulnasoft.com/api/get-execution-details/
     /// </summary>
     /// <param name="notificationId"></param>
     /// <param name="subscriberId"></param>

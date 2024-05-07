@@ -5,7 +5,7 @@ using Teleflow.Models.Workflows.Step.Message;
 namespace Teleflow.DTO.Layouts;
 
 /// <summary>
-///     see https://docs.teleflow.co/api/layout-creation/
+///     see https://docs.teleflow.khulnasoft.com/api/layout-creation/
 /// </summary>
 public class LayoutCreateData
 {

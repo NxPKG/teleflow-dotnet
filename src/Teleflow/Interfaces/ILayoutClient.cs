@@ -5,14 +5,14 @@ using Refit;
 namespace Teleflow.Interfaces;
 
 /// <summary>
-///     see https://docs.teleflow.co/api/layout-creation/
+///     see https://docs.teleflow.khulnasoft.com/api/layout-creation/
 /// </summary>
 public interface ILayoutClient
 {
     /// <summary>
     ///     Returns a list of layouts that can be paginated using the `page` query parameter and filtered by the
     ///     environment where it is executed from the organization the user belongs to.
-    ///     see https://docs.teleflow.co/api/filter-layouts/
+    ///     see https://docs.teleflow.khulnasoft.com/api/filter-layouts/
     /// </summary>
     /// <param name="page">Number of page for the pagination</param>
     /// <param name="pageSize">Size of page for the pagination</param>
@@ -31,21 +31,21 @@ public interface ILayoutClient
 
     /// <summary>
     ///     Get a layout by its ID
-    ///     see https://docs.teleflow.co/api/get-layout/
+    ///     see https://docs.teleflow.khulnasoft.com/api/get-layout/
     /// </summary>
     [Get("/layouts/{id}")]
     public Task<TeleflowResponse<Layout>> Get(string id);
 
     /// <summary>
     ///     Create a layout
-    ///     https://docs.teleflow.co/api/layout-creation/
+    ///     https://docs.teleflow.khulnasoft.com/api/layout-creation/
     /// </summary>
     [Post("/layouts")]
     public Task<TeleflowResponse<Layout>> Create([Body] LayoutCreateData createLayoutData);
 
     /// <summary>
     ///     Update the name, content and variables of a layout. Also change it to be default or no.
-    ///     see https://docs.teleflow.co/api/update-layout/
+    ///     see https://docs.teleflow.khulnasoft.com/api/update-layout/
     /// </summary>
     [Patch("/layouts/{id}")]
     public Task<TeleflowResponse<Layout>> Update(
@@ -54,13 +54,13 @@ public interface ILayoutClient
 
     /// <summary>
     ///     Execute a soft delete of a layout given a certain ID.
-    ///     see https://docs.teleflow.co/api/delete-layout/
+    ///     see https://docs.teleflow.khulnasoft.com/api/delete-layout/
     /// </summary>
     [Delete("/layouts/{id}")]
     public Task Delete(string id);
 
     /// <summary>
-    ///     https://docs.teleflow.co/api/set-default-layout/
+    ///     https://docs.teleflow.khulnasoft.com/api/set-default-layout/
     /// </summary>
     [Post("/layouts/{id}/default")]
     public Task SetAsDefault(string id);

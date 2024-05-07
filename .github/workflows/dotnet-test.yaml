@@ -29,14 +29,14 @@ jobs:
         working-directory: ./src/
         run: dotnet test --filter FullyQualifiedName~MicroTests
         env:
-          TELEFLOW_API_URL: https://api.teleflow.co/v1
+          TELEFLOW_API_URL: https://api-teleflow.khulnasoft.com/v1
           TELEFLOW_API_KEY: ${{ secrets.TELEFLOW_API_KEY }}
         
         ##
         ## FOR TESTS WITH REAL CONNECTIONS
         ##
         ## this run should work but something is not picking up values and mapping in the configuration
-        ## run: dotnet test -p:Teleflow__Url=https://api.teleflow.co/v1 -p:Teleflow__ApiKey=${{ secrets.TELEFLOW_API_KEY }}
+        ## run: dotnet test -p:Teleflow__Url=https://api-teleflow.khulnasoft.com/v1 -p:Teleflow__ApiKey=${{ secrets.TELEFLOW_API_KEY }}
         ## instead inject using the ad hoc environment variable override
         ## see https://github.com/nxpkg/teleflow-dotnet/blob/main/src/Teleflow.Extensions/ConfigurationExtensions.cs
         ##
@@ -49,7 +49,7 @@ jobs:
         working-directory: ./src/
         run: dotnet test --filter FullyQualifiedName~IntegrationTests.IntegrationTests
         env:
-          TELEFLOW_API_URL: https://api.teleflow.co/v1
+          TELEFLOW_API_URL: https://api-teleflow.khulnasoft.com/v1
           TELEFLOW_API_KEY: ${{ secrets.TELEFLOW_API_KEY }}
 
 # TODO: understand why these hang
@@ -58,7 +58,7 @@ jobs:
 #        working-directory: ./src/
 #        run: dotnet test --verbosity normal --filter FullyQualifiedName~IntegrationTests
 #        env:
-#          TELEFLOW_API_URL: https://api.teleflow.co/v1
+#          TELEFLOW_API_URL: https://api-teleflow.khulnasoft.com/v1
 #          TELEFLOW_API_KEY: ${{ secrets.TELEFLOW_API_KEY }}
 
       - name: Acceptance Tests
@@ -66,6 +66,6 @@ jobs:
 
         run: dotnet test --verbosity normal --filter FullyQualifiedName~AcceptanceTests
         env:
-          TELEFLOW_API_URL: https://api.teleflow.co/v1
+          TELEFLOW_API_URL: https://api-teleflow.khulnasoft.com/v1
           TELEFLOW_API_KEY: ${{ secrets.TELEFLOW_API_KEY }}
         

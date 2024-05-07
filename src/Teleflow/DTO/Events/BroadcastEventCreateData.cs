@@ -4,7 +4,7 @@ using Teleflow.DTO.Workflows;
 namespace Teleflow.DTO.Events;
 
 /// <summary>
-///     see https://docs.teleflow.co/api/broadcast-event-to-all/
+///     see https://docs.teleflow.khulnasoft.com/api/broadcast-event-to-all/
 /// </summary>
 public class BroadcastEventCreateData
 {

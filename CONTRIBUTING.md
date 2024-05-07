@@ -20,7 +20,7 @@ You can open a new issue with this [issue form](https://github.com/nxpkg/teleflo
 ### Requirements
 
 - .NET 7
-- Teleflow API Key - Can be located at https://web.teleflow.co/settings
+- Teleflow API Key - Can be located at https://web.teleflow.khulnasoft.com/settings
 
 ### Setup the project
 
@@ -49,4 +49,4 @@ Questions, suggestions, and thoughts are most welcome. Feel free to open a [GitH
 - Help create tutorials and blog posts
 - Request a feature by submitting a proposal
 - Report a bug
-- **Improve documentation** - fix incomplete or missing [docs](https://docs.teleflow.co/), bad wording, examples or explanations.
+- **Improve documentation** - fix incomplete or missing [docs](https://docs.teleflow.khulnasoft.com/), bad wording, examples or explanations.

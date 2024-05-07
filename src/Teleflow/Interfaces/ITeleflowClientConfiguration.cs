@@ -4,7 +4,7 @@ public interface ITeleflowClientConfiguration
 {
     /// <summary>
     ///     Full URL to where the Teleflow API is housed. Defaults to
-    ///     https://api.teleflow.co/v1
+    ///     https://api-teleflow.khulnasoft.com/v1
     /// </summary>
     public string Url { get; set; }
 

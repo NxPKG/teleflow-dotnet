@@ -9,7 +9,7 @@ namespace Teleflow.DTO.Workflows;
 public class WorkflowCreateData
 {
     /// <remarks>
-    ///     This is a workflow group in the api see https://docs.teleflow.co/api/create-workflow-group/
+    ///     This is a workflow group in the api see https://docs.teleflow.khulnasoft.com/api/create-workflow-group/
     /// </remarks>
     [JsonProperty("notificationGroupId")]
     [Required]
@@ -40,7 +40,7 @@ public class WorkflowCreateData
     [JsonProperty("critical")] public bool Critical { get; set; }
 
     /// <remarks>
-    ///     This is a workflow group in the api see https://docs.teleflow.co/api/create-workflow-group/
+    ///     This is a workflow group in the api see https://docs.teleflow.khulnasoft.com/api/create-workflow-group/
     /// </remarks>
     [JsonProperty("preferenceSettings")]
     public PreferenceChannels PreferenceSettings { get; set; }

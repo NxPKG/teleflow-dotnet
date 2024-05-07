@@ -4,7 +4,7 @@ using Teleflow.Models.Triggers;
 namespace Teleflow.DTO.Events;
 
 /// <summary>
-///     see https://docs.teleflow.co/platform/topics/#sending-a-notification-to-a-topic
+///     see https://docs.teleflow.khulnasoft.com/platform/topics/#sending-a-notification-to-a-topic
 ///     Sending a notification to a topic
 ///     In the section Quick Start it is explained how to trigger a notification for a single subscriber either by
 ///     passing the subscribers identifier or by passing the full subscriber information if user wants to skip the
@@ -54,7 +54,7 @@ public class TopicCreateData
     public string? TransactionId { get; set; }
 
     /// <summary>
-    ///     see https://docs.teleflow.co/platform/topics/#exclude-actor-from-topic-trigger-event
+    ///     see https://docs.teleflow.khulnasoft.com/platform/topics/#exclude-actor-from-topic-trigger-event
     ///     To exclude the actor responsible for the action of a triggered topic event, you must add the subscriberId
     ///     of that actor when triggering that event.
     ///     const topicKey = 'posts:comment:12345';

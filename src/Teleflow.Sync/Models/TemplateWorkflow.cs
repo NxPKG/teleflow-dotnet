@@ -21,7 +21,7 @@ public class TemplateWorkflow
     public bool Critical { get; set; }
 
     /// <remarks>
-    ///     This is a workflow group in the api see https://docs.teleflow.co/api/create-workflow-group/
+    ///     This is a workflow group in the api see https://docs.teleflow.khulnasoft.com/api/create-workflow-group/
     /// </remarks>
     public PreferenceChannels PreferenceSettings { get; set; }
 

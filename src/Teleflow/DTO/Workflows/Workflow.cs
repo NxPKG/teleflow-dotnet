@@ -18,7 +18,7 @@ public class Workflow
     [JsonProperty("_environmentId")] public string EnvironmentId { get; set; }
 
     /// <remarks>
-    ///     This is a workflow group in the api see https://docs.teleflow.co/api/create-workflow-group/
+    ///     This is a workflow group in the api see https://docs.teleflow.khulnasoft.com/api/create-workflow-group/
     /// </remarks>
     [JsonProperty("_notificationGroupId")]
     public string WorkflowGroupId { get; set; }
@@ -39,7 +39,7 @@ public class Workflow
     [JsonProperty("tags")] public string[] Tags { get; set; }
 
     /// <remarks>
-    ///     This is a workflow group in the api see https://docs.teleflow.co/api/create-workflow-group/
+    ///     This is a workflow group in the api see https://docs.teleflow.khulnasoft.com/api/create-workflow-group/
     /// </remarks>
     [JsonProperty("preferenceSettings")]
     public PreferenceChannels PreferenceSettings { get; set; }

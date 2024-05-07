@@ -13,7 +13,7 @@ public interface IEventClient
     ///     Trigger a notification to all the subscribers assigned to a topic, which helps to have
     ///     to avoid to list all the subscriber identifiers in the to field of the notification trigger
     /// 
-    ///     see https://docs.teleflow.co/platform/topics#sending-a-notification-to-a-topic
+    ///     see https://docs.teleflow.khulnasoft.com/platform/topics#sending-a-notification-to-a-topic
     /// </summary>
     [Post("/events/trigger")]
     Task<TeleflowResponse<EventAcknowledgeData>> Create([Body] TopicCreateData data);
