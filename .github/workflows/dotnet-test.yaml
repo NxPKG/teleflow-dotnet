@@ -1,0 +1,71 @@
+name: "Test Pull Request"
+
+on:
+  pull_request:
+    branches: [ main ]
+  
+  workflow_dispatch:
+
+jobs:
+  build_and_test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 7.0.x
+
+      ## Restore Teleflow as a solution
+      - name: Restore dependencies
+        working-directory: ./src/
+        run: dotnet restore
+
+      ## each test type is targeted specifically via a filter
+      ## see https://learn.microsoft.com/en-us/dotnet/core/testing/selective-unit-tests?pivots=mstest
+      
+      ## Test Teleflow
+      - name: Micro Tests
+        working-directory: ./src/
+        run: dotnet test --filter FullyQualifiedName~MicroTests
+        env:
+          TELEFLOW_API_URL: https://api.teleflow.co/v1
+          TELEFLOW_API_KEY: ${{ secrets.TELEFLOW_API_KEY }}
+        
+        ##
+        ## FOR TESTS WITH REAL CONNECTIONS
+        ##
+        ## this run should work but something is not picking up values and mapping in the configuration
+        ## run: dotnet test -p:Teleflow__Url=https://api.teleflow.co/v1 -p:Teleflow__ApiKey=${{ secrets.TELEFLOW_API_KEY }}
+        ## instead inject using the ad hoc environment variable override
+        ## see https://github.com/nxpkg/teleflow-dotnet/blob/main/src/Teleflow.Extensions/ConfigurationExtensions.cs
+        ##
+        ## also up the logging because when something is wrong it is hard to diagnose
+        ##
+
+
+      ## Test that is small and short to indicate system is up and going (enough)
+      - name: Integration Tests (ping)
+        working-directory: ./src/
+        run: dotnet test --filter FullyQualifiedName~IntegrationTests.IntegrationTests
+        env:
+          TELEFLOW_API_URL: https://api.teleflow.co/v1
+          TELEFLOW_API_KEY: ${{ secrets.TELEFLOW_API_KEY }}
+
+# TODO: understand why these hang
+        
+#      - name: Integration Tests
+#        working-directory: ./src/
+#        run: dotnet test --verbosity normal --filter FullyQualifiedName~IntegrationTests
+#        env:
+#          TELEFLOW_API_URL: https://api.teleflow.co/v1
+#          TELEFLOW_API_KEY: ${{ secrets.TELEFLOW_API_KEY }}
+
+      - name: Acceptance Tests
+        working-directory: ./src/
+
+        run: dotnet test --verbosity normal --filter FullyQualifiedName~AcceptanceTests
+        env:
+          TELEFLOW_API_URL: https://api.teleflow.co/v1
+          TELEFLOW_API_KEY: ${{ secrets.TELEFLOW_API_KEY }}
+        

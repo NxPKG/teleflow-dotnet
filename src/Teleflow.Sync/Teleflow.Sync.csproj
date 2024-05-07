@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <LangVersion>11.0</LangVersion>
+        <RootNamespace>Teleflow.Sync</RootNamespace>
+    </PropertyGroup>
+
+    <!-- Nuget Settings -->
+    <PropertyGroup>
+        <PackageId>Teleflow.Sync</PackageId>
+        <Version>0.0.0</Version>
+        <ProductName>Teleflow.Sync</ProductName>
+        <Description>Teleflow .NET SDK</Description>
+        <RepositoryType>git</RepositoryType>
+        <RepositoryUrl>https://github.com/nxpkg/teleflow-dotnet</RepositoryUrl>
+        <Authors>NxPKG</Authors>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Teleflow\Teleflow.csproj"/>
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Bcl.HashCode" Version="1.1.1"/>
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0"/>
+    </ItemGroup>
+
+    <!-- Nuget Assets -->
+    <ItemGroup>
+        <None Include="..\..\README.md" Pack="true" PackagePath="\"/>
+        <None Include="LICENSE.txt" Pack="true" PackagePath=""/>
+    </ItemGroup>
+    
+</Project>

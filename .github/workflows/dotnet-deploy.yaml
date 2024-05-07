@@ -1,0 +1,55 @@
+name: "Deploy to Nuget"
+# Step One: Perhaps most importantly, the trigger has changed, this workflow will run whenever a tag is pushed
+# to the repository that matches the v#.#.# pattern (where # is one or more digits).
+on:
+  push:
+    tags:
+      # note: this could be more constrained—"v[0-9]+.[0-9]+.[0-9]+"
+      - "v*.*.*"
+
+env:
+  WORKING_DIRECTORY: "./src/"
+  PACKAGE_OUTPUT_DIRECTORY: ${{ github.workspace }}/output
+  NUGET_SOURCE_URL: "https://api.nuget.org/v3/index.json"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 7.0.x
+
+      # Step Two: build
+      - name: Build Teleflow Solution (all projects)
+        working-directory: ${{ env.WORKING_DIRECTORY }}
+        run: dotnet build --configuration Release
+
+      # Step Three: package each of the libraries with the version updated (note: this allow source to hold version 0.0.0)
+      - name: Get version
+        id: version
+        uses: battila7/get-version-action@v2
+
+      - name: Teleflow — create Nuget package
+        ## dotnet pack Teleflow/Teleflow.csproj --no-restore --no-build --configuration Release -p:PackageVersion=0.0.0.0 -p:Version=0.0.0.0 --output .
+        run: dotnet pack ${{ env.WORKING_DIRECTORY }}/Teleflow/Teleflow.csproj --no-restore --no-build --configuration Release -p:PackageVersion=${{ steps.version.outputs.version-without-v }} -p:Version=${{ steps.version.outputs.version-without-v }} --output ${{ env.PACKAGE_OUTPUT_DIRECTORY }}
+
+      - name: Teleflow.Extensions — create Nuget package
+        ## dotnet pack Teleflow.Extensions/Teleflow.Extensions.csproj --no-restore --no-build --configuration Release -p:PackageVersion=0.0.0.0 -p:Version=0.0.0.0 --output .
+        run: dotnet pack ${{ env.WORKING_DIRECTORY }}/Teleflow.Extensions/Teleflow.Extensions.csproj --no-restore --no-build --configuration Release -p:PackageVersion=${{ steps.version.outputs.version-without-v }} -p:Version=${{ steps.version.outputs.version-without-v }} --output ${{ env.PACKAGE_OUTPUT_DIRECTORY }}
+
+      - name: Teleflow.Sync — create Nuget package
+        ## dotnet pack Teleflow.Sync/Teleflow.Sync.csproj --no-restore --no-build --configuration Release -p:PackageVersion=0.0.0.0 -p:Version=0.0.0.0 --output .
+        run: dotnet pack ${{ env.WORKING_DIRECTORY }}/Teleflow.Sync/Teleflow.Sync.csproj --no-restore --no-build --configuration Release -p:PackageVersion=${{ steps.version.outputs.version-without-v }} -p:Version=${{ steps.version.outputs.version-without-v }} --output ${{ env.PACKAGE_OUTPUT_DIRECTORY }}
+
+      # Step Four: publish all
+      - name: Teleflow — push Nuget package
+        run: dotnet nuget push ${{ env.PACKAGE_OUTPUT_DIRECTORY}}/Teleflow.${{ steps.version.outputs.version-without-v }}.nupkg -k ${{ secrets.NUGET_AUTH_TOKEN }} -s ${{ env.NUGET_SOURCE_URL}}
+
+      - name: Teleflow.Extensions — push Nuget package
+        run: dotnet nuget push ${{ env.PACKAGE_OUTPUT_DIRECTORY}}/Teleflow.Extensions.${{ steps.version.outputs.version-without-v }}.nupkg -k ${{ secrets.NUGET_AUTH_TOKEN }} -s ${{ env.NUGET_SOURCE_URL}}
+
+      - name: Teleflow.Sync — push Nuget package
+        run: dotnet nuget push ${{ env.PACKAGE_OUTPUT_DIRECTORY}}/Teleflow.Sync.${{ steps.version.outputs.version-without-v }}.nupkg -k ${{ secrets.NUGET_AUTH_TOKEN }} -s ${{ env.NUGET_SOURCE_URL}}

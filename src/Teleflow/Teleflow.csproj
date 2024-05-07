@@ -1,0 +1,47 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <!-- General Settings -->
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <LangVersion>11.0</LangVersion>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <NoWarn>CS8604,CS8618</NoWarn>
+        <RootNamespace>Teleflow</RootNamespace>
+    </PropertyGroup>
+
+    <!-- Nuget Settings -->
+    <PropertyGroup>
+        <PackageId>Teleflow</PackageId>
+        <Version>0.0.0</Version>
+        <ProductName>Teleflow</ProductName>
+        <Description>Teleflow .NET SDK</Description>
+        <RepositoryType>git</RepositoryType>
+        <RepositoryUrl>https://github.com/nxpkg/teleflow-dotnet</RepositoryUrl>
+        <Authors>NxPKG</Authors>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    </PropertyGroup>
+
+    <!-- Required Nuget Packages -->
+    <ItemGroup>
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.3"/>
+        <PackageReference Include="Refit" Version="7.0.0" />
+        <PackageReference Include="Refit.Newtonsoft.Json" Version="7.0.0" />
+        <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0"/>
+    </ItemGroup>
+
+    <!-- Nuget Assets -->
+    <ItemGroup>
+        <None Include="..\..\README.md" Pack="true" PackagePath="\"/>
+        <None Include="..\..\LICENSE.txt" Pack="true" PackagePath=""/>
+    </ItemGroup>
+    <ItemGroup>
+      <Compile Remove="JsonConverters\EnumMemberExtensions.cs" />
+      <Compile Remove="NotificationTemplates\Child.cs" />
+      <Compile Remove="NotificationTemplates\Filter.cs" />
+      <Compile Remove="NotificationTemplates\Step.cs" />
+      <Compile Remove="NotificationTemplates\Trigger.cs" />
+    </ItemGroup>
+
+</Project>

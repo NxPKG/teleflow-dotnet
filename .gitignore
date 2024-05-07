@@ -1,0 +1,10 @@
+.idea
+src/.idea
+src/Teleflow.NET.sln.DotSettings
+src/Teleflow.NET.sln.DotSettings.user
+bin
+obj
+.DS_STORE
+src/Teleflow.sln.DotSettings.user
+**/.vs
+appsettings.todd.json
